@@ -95,3 +95,12 @@ HTML Endpoints
 
 `[baseurl]/smallshop`: a tasteless index.html
 
+TODO
+----
+
+1. Support [Accept](https://github.com/jshttp/accepts) formats
+2. Support MongoDB
+3. Unit and integration tests
+4. User identity (via OAuth)
+5. Productionize to Heroku and wire with personal domain
+
