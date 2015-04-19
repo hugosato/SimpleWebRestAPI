@@ -9,7 +9,7 @@ module.exports = function(store, xs) {
     var acc = {
         total: 0,
         add: function(x) {
-            this.total += x;
+            this.total += store.products[x].price;
         }
     };
     traverse(store, acc, xs);

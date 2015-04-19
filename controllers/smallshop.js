@@ -11,13 +11,13 @@ smallshop.get('/', function(req, res, next) {
 });
 
 smallshop.get('/product', function(req, res, next) {
-  res.json(store.products);
+  res.jsonp(store.products);
 });
 
 smallshop.get('/product/:id', function(req, res, next) {
   var storedProduct = store.products[req.params.id];
   if (storedProduct) {
-    res.json(storedProduct);
+    res.jsonp(storedProduct);
   } else {
     res.status(404).send('unknown product: ' + req.params.id);
   }
@@ -27,7 +27,7 @@ smallshop.get('/total', function(req, res, next) {
     var cart = req.query.cart;
     if (cart) {
         var total = checkout(store, cart);
-        res.json(total);
+        res.jsonp(total);
     } else {
         res.status(400).send('Missing \"cart\" param in querystring');
     }

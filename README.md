@@ -88,7 +88,7 @@ Taking same configuration above, `[baseurl]/smallshop/total?cart[]=apple&cart[]=
 
 ### Response format
 
-We only support JSON format for now.
+We only support JSON and JSONP format for now. For JSONP padding, use querystring param named `callback`.
 
 HTML Endpoints
 --------------
