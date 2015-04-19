@@ -45,29 +45,27 @@ app.use('/', index);
 app.use('/smallshop', smallshop);
 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
-// Error handlers
-if (app.get('env') === 'prod') {
-  // Do not leak private info in response
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: {}
-    });
-  });
-} else {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+// Error handlers: http://expressjs.com/guide/error-handling.html
+app.use(function(err, req, res, next) {
+    if (app.get('env') === 'prod') {
+        // Do not leak private info in response
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
+    } else {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    }
+});
 
 module.exports = app;

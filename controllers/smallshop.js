@@ -23,6 +23,12 @@ smallshop.get('/product/:id', function(req, res, next) {
   }
 });
 
+// test express filter chain
+smallshop.get('/ops', function(req, res, next) {
+    var err = new Error('Ops, something went wrong with your request');
+    next(err);
+});
+
 smallshop.get('/total', function(req, res, next) {
     var cart = req.query.cart;
     if (cart) {
